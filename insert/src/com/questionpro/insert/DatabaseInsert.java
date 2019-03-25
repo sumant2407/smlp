@@ -1,6 +1,6 @@
 package com.questionpro.insert;
 
-import com.questionpro.DbUtility;
+import com.questionpro.utility.DbUtility;
 
 import java.io.File;
 import java.io.FileWriter;

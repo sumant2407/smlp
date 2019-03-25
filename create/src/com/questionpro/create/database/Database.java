@@ -5,7 +5,7 @@ import com.questionpro.constants.AcknowledgementType;
 
 public class Database {
 
-    public String Create(String dbName) {
+    public String create(String dbName) {
         createDBFolderIfDoesntExists();
         if (!DbUtility.databaseExists(dbName)) {
             DbUtility.createDatabase(dbName);

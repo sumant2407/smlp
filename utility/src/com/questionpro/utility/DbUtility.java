@@ -4,6 +4,7 @@ package com.questionpro.utility;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.List;
 
 public class DbUtility {
     private static final String DBPATH = System.getProperty("user.dir") + "/" + "database_folder";
@@ -54,4 +55,13 @@ public class DbUtility {
         createFile(DBPATH + "/" + dbName + "/" + TABLE_FOLDER + "/" + tableName + ".txt");
         createFile(DBPATH + "/" + dbName + "/" + TABLE_METADATA + "/" + tableName + ".txt");
     }
+
+    public static String getTableFile(String dbName, String tableName) {
+        return DBPATH + "/" + dbName + "/" + TABLE_FOLDER + "/" + tableName +  ".txt";
+    }
+
+    public static List<String> getAllColumnsForTable(String tableName) {
+        return null;
+    }
+
 }

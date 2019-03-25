@@ -1,6 +1,6 @@
 package com.questionpro.create.table;
 
-import com.questionpro.DbUtility;
+import com.questionpro.utility.DbUtility;
 import com.questionpro.constants.AcknowledgementType;
 
 public class Table {
