@@ -30,6 +30,10 @@ public class MainApp {
                 System.out.println(SelectFromTable.selectAll(CommandParams.getCommandParams(CommandArgType.SELECT_ALL, cmd),
                         CommandParams.getWhereClause(cmd)));
                 break;
+            case SIMPLE_SELECT:
+                System.out.println(SelectFromTable.simpleSelect(CommandParams.getCommandParams(CommandArgType.SIMPLE_SELECT,cmd),
+                        CommandParams.getSelectConditionClause(cmd),CommandParams.getWhereClause(cmd)));
+                break;
         }
         CreateDatabase.sayHello();
     }

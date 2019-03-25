@@ -5,6 +5,7 @@ public enum CommandArgType {
     CREATE_TABLE("create table "),
     INSERT_INTO_TABLE("insert into "),
     SELECT_ALL("select * from"),
+    SIMPLE_SELECT("select ("),
     EMPTY(" ");
 
     private String value;

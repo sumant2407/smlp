@@ -5,12 +5,13 @@ import com.questionpro.constants.CommandArgType;
 public class CommandParams {
     public static String getCommandParams(CommandArgType cmdType, String cmdInput) {
         String cmdArray[] = cmdInput.split(" ");
-        if (cmdType.equals(CommandArgType.CREATE_DATABASE)) {
+        if (cmdType.getValue().contains(CommandArgType.CREATE_DATABASE.getValue())) {
             return cmdArray[2];
-        } else if (cmdType.equals(CommandArgType.CREATE_TABLE) ||
-                cmdType.equals(CommandArgType.INSERT_INTO_TABLE)) {
+        } else if (cmdType.getValue().contains(CommandArgType.CREATE_TABLE.getValue()) ||
+                cmdType.getValue().contains(CommandArgType.INSERT_INTO_TABLE.getValue())) {
             return getTableName(cmdArray[2]);
-        } else if(cmdType.equals(CommandArgType.SELECT_ALL)) {
+        } else if(cmdType.getValue().contains(CommandArgType.SELECT_ALL.getValue())||
+                cmdType.getValue().contains(CommandArgType.SIMPLE_SELECT.getValue())) {
             return getTableName(cmdArray[3]);
         }
         return " ";
@@ -21,14 +22,26 @@ public class CommandParams {
                 CommandArgType.EMPTY.getValue();
     }
 
-    public static String getTableName(String tableName) {
-        return tableName.contains("\\.")? tableName.split("\\.")[1]: tableName;
+    public static String getTableName(String tableNameWithDB) {
+        return tableNameWithDB.contains("\\.")? tableNameWithDB.split("\\.")[1]: tableNameWithDB;
+    }
+
+    public static String extractOnlyDBName(String tableNameWithDB) {
+        return tableNameWithDB.contains("\\.")? tableNameWithDB.split("\\.")[0]: tableNameWithDB;
     }
 
     public static String getWhereClause(String cmdInput) {
         String cmdArray[] = cmdInput.split("where");
         if(cmdInput.contains(" where ")) {
             return cmdArray[1];
+        }
+        return CommandArgType.EMPTY.getValue();
+    }
+
+    public static String getSelectConditionClause(String cmdInput) {
+        String cmdArray[] = cmdInput.split("where");
+        if (cmdArray[0].contains("(")) {
+            cmdArray[0].substring(cmdArray[0].indexOf("(") + 1, cmdArray[0].indexOf(")"));
         }
         return CommandArgType.EMPTY.getValue();
     }
