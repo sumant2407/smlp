@@ -1,8 +1,9 @@
 package com.questionpro.constants;
 
 public enum CommandArgType {
-    CREATE_DATABASE("create database"),
-    CREATE_TABLE("create table");
+    CREATE_DATABASE("create database "),
+    CREATE_TABLE("create table "),
+    INSERT_INTO_TABLE("insert into ");
 
     private String value;
 

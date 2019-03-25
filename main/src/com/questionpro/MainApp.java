@@ -3,6 +3,7 @@ package com.questionpro;
 import com.questionpro.constants.CommandArgType;
 import com.questionpro.create.database.CreateDatabase;
 import com.questionpro.create.table.CreateTable;
+import com.questionpro.insert.InsertIntoTable;
 
 import java.util.Scanner;
 
@@ -18,7 +19,12 @@ public class MainApp {
             case CREATE_TABLE:
                 System.out.println(CreateTable.createTable(CommandParams.getDbName(cmd),
                         CommandParams.getCommandParams(CommandArgType.CREATE_TABLE, cmd),
-                        CommandParams.getCreateCommandClause(cmd)));
+                        CommandParams.getCommandClause(cmd)));
+                break;
+            case INSERT_INTO_TABLE:
+                InsertIntoTable.insertIntoTable(CommandParams.getCommandParams(
+                        CommandArgType.INSERT_INTO_TABLE, cmd), CommandParams.getCommandClause(cmd));
+                break;
         }
         CreateDatabase.sayHello();
     }

@@ -1,6 +1,6 @@
 package com.questionpro.create.database;
 
-import com.questionpro.DbUtility;
+import com.questionpro.utility.DbUtility;
 import com.questionpro.constants.AcknowledgementType;
 
 public class CreateDatabase {

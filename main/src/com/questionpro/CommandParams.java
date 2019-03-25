@@ -7,18 +7,19 @@ public class CommandParams {
         String cmdArray[] = cmdInput.split(" ");
         if (cmdType.equals(CommandArgType.CREATE_DATABASE)) {
             return cmdArray[2];
-        } else if (cmdType.equals(CommandArgType.CREATE_TABLE)) {
+        } else if (cmdType.equals(CommandArgType.CREATE_TABLE) ||
+                cmdType.equals(CommandArgType.INSERT_INTO_TABLE)) {
             return getTableName(cmdArray[2]);
         }
         return " ";
     }
 
-    public static String getCreateCommandClause(String cmdInput) {
+    public static String getCommandClause(String cmdInput) {
         return cmdInput.substring(cmdInput.indexOf("(")+1, cmdInput.indexOf(")"));
     }
 
-    private static String getTableName(String tableNameWithDB) {
-        return tableNameWithDB.split("\\.")[1];
+    public static String getTableName(String tableName) {
+        return tableName.split("\\.")[1];
     }
 
     public static String getDbName(String cmdInput) {

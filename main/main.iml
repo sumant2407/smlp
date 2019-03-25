@@ -11,5 +11,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="create" />
     <orderEntry type="module" module-name="contants" />
+    <orderEntry type="module" module-name="insert" />
   </component>
 </module>
