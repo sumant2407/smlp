@@ -10,7 +10,7 @@ public class CreateDatabase {
         System.out.println(System.getProperty("user.dir"));
     }
 
-    public static String CreateDatabase (String dbName){
+    public static String createDatabase (String dbName){
         if(!databaseExists(dbName)) {
 
             return AcknowledgementType.DATABASE_CREATED.getValue();
