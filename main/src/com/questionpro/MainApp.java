@@ -4,7 +4,6 @@ import com.questionpro.constants.CommandArgType;
 import com.questionpro.create.database.Database;
 import com.questionpro.create.table.CreateTable;
 import com.questionpro.insert.DatabaseInsert;
-import com.questionpro.insert.InsertIntoTable;
 import com.questionpro.select.SelectFromTable;
 
 import java.util.Scanner;
