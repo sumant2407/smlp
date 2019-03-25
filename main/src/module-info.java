@@ -3,4 +3,5 @@ module main {
     requires insert;
     requires contants;
     requires select;
+    requires utility;
 }
