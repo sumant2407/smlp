@@ -4,6 +4,8 @@ import com.questionpro.constants.CommandArgType;
 import com.questionpro.create.database.Database;
 import com.questionpro.create.table.CreateTable;
 import com.questionpro.insert.DatabaseInsert;
+import com.questionpro.insert.InsertIntoTable;
+import com.questionpro.select.SelectFromTable;
 
 import java.util.Scanner;
 
@@ -25,6 +27,15 @@ public class MainApp {
                 new DatabaseInsert().performInsert(CommandParams.getDbName(cmd), CommandParams.getCommandParams(
                         CommandArgType.INSERT_INTO_TABLE, cmd), CommandParams.getCommandClause(cmd));
                 break;
+            case SELECT_ALL:
+                System.out.println(SelectFromTable.selectAll(CommandParams.getCommandParams(CommandArgType.SELECT_ALL, cmd),
+                        CommandParams.getWhereClause(cmd)));
+                break;
+            case SIMPLE_SELECT:
+                System.out.println(SelectFromTable.simpleSelect(CommandParams.getCommandParams(CommandArgType.SIMPLE_SELECT,cmd),
+                        CommandParams.getSelectConditionClause(cmd),CommandParams.getWhereClause(cmd)));
+                break;
         }
+
     }
 }

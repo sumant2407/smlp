@@ -3,7 +3,10 @@ package com.questionpro.constants;
 public enum CommandArgType {
     CREATE_DATABASE("create database "),
     CREATE_TABLE("create table "),
-    INSERT_INTO_TABLE("insert into ");
+    INSERT_INTO_TABLE("insert into "),
+    SELECT_ALL("select * from"),
+    SIMPLE_SELECT("select ("),
+    EMPTY(" ");
 
     private String value;
 
