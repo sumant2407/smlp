@@ -7,10 +7,12 @@ public class CreateDatabase {
 
     public  static void sayHello(){
         System.out.println("hello");
-        System.out.println(System.getProperty("user.dir"));
+
     }
 
     public static String CreateDatabase (String dbName){
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
         if(!databaseExists(dbName)) {
 
             return AcknowledgementType.DATABASE_CREATED.getValue();
