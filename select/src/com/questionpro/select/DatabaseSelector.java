@@ -20,7 +20,7 @@ public class DatabaseSelector {
                     Stream.of(tableData.split("$")).map(singleRecord -> createMap(singleRecord)).collect(Collectors.toList());
             List<String> columns = new ArrayList<>();
             if (columnNames.equals("*")) {
-                columns = DbUtility.getAllColumnsForTable(tableName);
+                columns = DbUtility.getAllColumnsForTable(tableName, dbName);
             } else {
                 columns = Stream.of(columnNames.split(",")).map(x -> x.strip()).collect(Collectors.toList());
             }

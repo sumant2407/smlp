@@ -8,7 +8,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DbUtility {
     private static final String DBPATH = System.getProperty("user.dir") + "/" + "database_folder";
@@ -75,8 +80,21 @@ public class DbUtility {
         return DBPATH + "/" + dbName + "/" + TABLE_FOLDER + "/" + tableName +  ".txt";
     }
 
-    public static List<String> getAllColumnsForTable(String tableName) {
-        return null;
+    public static List<String> getAllColumnsForTable(String tableName, String dbName) {
+        String tableData ="";
+        try {
+            tableData =  new String(Files.readAllBytes(Paths.get(DbUtility.getTableFile(dbName, tableName))));
+        }catch(Exception e){
+
+        }
+        return createColList(tableData);
+    }
+
+    private static  List<String> createColList(String singleRecord) {
+        Map<String, Object> map = new HashMap<>();
+        String singleRecordWithoutCurlyBraces = singleRecord.strip().substring(1, singleRecord.length() - 1);
+        List<String> entries = Arrays.asList(singleRecordWithoutCurlyBraces.split(","));
+        return entries;
     }
 
 }
