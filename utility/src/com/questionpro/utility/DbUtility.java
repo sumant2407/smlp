@@ -4,6 +4,10 @@ package com.questionpro.utility;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class DbUtility {
@@ -51,9 +55,20 @@ public class DbUtility {
         return folderExists(DBPATH + "/" + dbName + "/" + TABLE_FOLDER + "/" + tableName);
     }
 
-    public static void createTable(String dbName, String tableName) {
+    public static void createTable(String dbName, String tableName, String tableData) {
         createFile(DBPATH + "/" + dbName + "/" + TABLE_FOLDER + "/" + tableName + ".txt");
         createFile(DBPATH + "/" + dbName + "/" + TABLE_METADATA + "/" + tableName + ".txt");
+        insertDataIntoMetaData(tableData, DBPATH + "/" + dbName + "/" + TABLE_METADATA + "/" + tableName + ".txt");
+    }
+
+    public static void insertDataIntoMetaData(String tableData, String pathString){
+        Path path = Paths.get(pathString);
+        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.WRITE))
+        {
+            writer.write(tableData);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public static String getTableFile(String dbName, String tableName) {
