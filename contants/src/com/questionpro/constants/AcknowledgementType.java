@@ -2,7 +2,9 @@ package com.questionpro.constants;
 
 public enum AcknowledgementType {
     DATABASE_CREATED("Database created successfully"),
-    DATABASE_EXISTS("Database already exists!!");
+    DATABASE_EXISTS("Database already exists!!"),
+    TABLE_CREATED("Table created successfully"),
+    TABLE_EXISTS("Table already exists!!");
 
 
     private String value;
