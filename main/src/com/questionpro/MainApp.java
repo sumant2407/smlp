@@ -10,9 +10,10 @@ public class MainApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String cmd = scanner.nextLine();
+        CreateDatabase createDB = new CreateDatabase();
         switch (CommandType.getCommandType(cmd)) {
             case CREATE_DATABASE:
-                System.out.println(CreateDatabase.createDatabase(CommandParams.getCommandParams(CommandArgType.CREATE_DATABASE, cmd)));
+                System.out.println(createDB.CreateDatabase(CommandParams.getCommandParams(CommandArgType.CREATE_DATABASE, cmd)));
                 break;
             case CREATE_TABLE:
                 System.out.println(CreateTable.createTable(CommandParams.getDbName(cmd),
