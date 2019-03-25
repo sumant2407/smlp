@@ -1,3 +1,3 @@
 module utility {
-    exports com.questionpro;
+    exports com.questionpro.utility;
 }
