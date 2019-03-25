@@ -13,8 +13,7 @@ public class DatabaseSelector {
 
     public String filter(String dbName, String tableName, String columnNames, String whereClause) throws IOException {
         if (DbUtility.tableExists(dbName, tableName)
-                && !columnNames.isBlank()
-                && !whereClause.isBlank()) {
+                && !columnNames.isBlank()) {
             String tableData = new String(Files.readAllBytes(Paths.get(DbUtility.getTableFile(dbName, tableName))));
             List<Map<String, Object>> allRecords =
                     Stream.of(tableData.split("$")).map(singleRecord -> createMap(singleRecord)).collect(Collectors.toList());
@@ -46,6 +45,7 @@ public class DatabaseSelector {
             output.append("=======================");
             columns.forEach(column -> output.append(column + " : " + singleRecord.get(column)));
         });
+
         return output.toString();
     }
 }

@@ -23,7 +23,7 @@ public class CommandParams {
     }
 
     public static String getTableName(String tableNameWithDB) {
-        return tableNameWithDB.contains("\\.")? tableNameWithDB.split("\\.")[1]: tableNameWithDB;
+        return tableNameWithDB.contains(".")? tableNameWithDB.split("\\.")[1]: tableNameWithDB;
     }
 
     public static String getWhereClause(String cmdInput) {
@@ -45,7 +45,7 @@ public class CommandParams {
     public static String getDbName(String cmdInput) {
         String cmdArray[] = cmdInput.split(" ");
         return isNotEmpty(cmdArray) &&
-                cmdArray[2].contains("\\.") ? cmdArray[2].split("\\.")[0] : cmdArray[2];
+                cmdArray[2].contains(".") ? cmdArray[2].split("\\.")[0] : cmdArray[2];
     }
 
     private static boolean isNotEmpty(String cmdArray[]) {

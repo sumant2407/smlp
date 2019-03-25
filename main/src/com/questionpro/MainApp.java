@@ -12,11 +12,14 @@ import com.questionpro.utility.DbUtility;
 import java.util.Scanner;
 
 public class MainApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(System.in);
         String cmd = scanner.nextLine();
         Database createDB = new Database();
         Table table = new Table();
+        DatabaseSelector ds = new DatabaseSelector();
+        String dbName = CommandParams.getDbName(cmd);
+
         switch (CommandType.getCommandType(cmd)) {
             case CREATE_DATABASE:
                 System.out.println(createDB.create(CommandParams.getCommandParams(CommandArgType.CREATE_DATABASE, cmd)));
@@ -31,17 +34,12 @@ public class MainApp {
                         CommandArgType.INSERT_INTO_TABLE, cmd), CommandParams.getCommandClause(cmd));
                 break;
             case SELECT_ALL:
-                String dbName = CommandParams.getDbName(cmd);
                 String tableName = CommandParams.getTableName(CommandParams.getCommandParams(CommandArgType.SIMPLE_SELECT,cmd));
-                DatabaseSelector.filter(dbName, tableName, DbUtility.getAllColumnsForTable(tableName)
-                        ,
-                        )
-                System.out.println(SelectFromTable.selectAll(CommandParams.getCommandParams(CommandArgType.SELECT_ALL, cmd),
-                        CommandParams.getWhereClause(cmd)));
+                ds.filter(dbName, tableName,"*","");
                 break;
             case SIMPLE_SELECT:
-                System.out.println(SelectFromTable.simpleSelect(CommandParams.getCommandParams(CommandArgType.SIMPLE_SELECT,cmd),
-                        CommandParams.getSelectConditionClause(cmd),CommandParams.getWhereClause(cmd)));
+                tableName = CommandParams.getTableName(CommandParams.getCommandParams(CommandArgType.SIMPLE_SELECT,cmd));
+                ds.filter(dbName,tableName,CommandParams.getSelectConditionClause(cmd)," ");
                 break;
         }
 
